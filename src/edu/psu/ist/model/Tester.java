@@ -4,7 +4,7 @@ public class Tester {
     // in Tester.java (in the model pkg -- for testing the splittable list)
     public static void main(String[] args) {
         ISplittableList<Integer> b =
-                new utilTest<>();
+                new UtilListImpl<>();
         System.out.println(b);                // should print: <><>
 
         b.addToRightAtFront(3);
