@@ -9,6 +9,15 @@ public class SplitListForm {
     private JButton addToRightAtButton;
     private JButton removeFromRightAtButton;
     private JButton moveForwardButton;
+
+    public JLabel getLeftLen() {
+        return LeftLen;
+    }
+
+    public JLabel getRightLen() {
+        return RightLen;
+    }
+
     private JButton moveToBeginningButton;
     private JButton clearButton;
 
@@ -59,4 +68,6 @@ public class SplitListForm {
     private JButton countOfButton;
     private JButton undoButton;
     private JLabel LastRemoved;
+    private JLabel LeftLen;
+    private JLabel RightLen;
 }
