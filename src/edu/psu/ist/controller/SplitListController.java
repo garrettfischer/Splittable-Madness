@@ -23,5 +23,24 @@ public class SplitListController {
         //        and the App class runs and displays your form)
         //   add action listeners to the various buttons and manipulate the listModel,
         //   updating the various components on the view when needed
+
+
+        // add to right at front
+        view.form.getAddToRightAtButton().addActionListener(e -> {
+            String input = view.form.getElementInput().getText();
+            listModel.addToRightAtFront(input);
+            view.form.getListValueLabel().setText(listModel.toString() + "");
+        });
+
+        // todo: need to add error checking (example in dog video) for a couple things i htink
+
+        // remove from right at front
+        view.form.getRemoveFromRightAtButton().addActionListener(e -> {
+            view.form.getLastRemoved().setText(listModel.removeFromRightAtFront() + "");
+            //listModel.removeFromRightAtFront();
+            view.form.getListValueLabel().setText(listModel.toString() + "");
+        });
+
+
     }
 }

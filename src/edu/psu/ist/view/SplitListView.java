@@ -13,7 +13,7 @@ public class SplitListView extends JFrame {
         this.form = new SplitListForm();
         JPanel content = form.getMyPanel();
         this.setContentPane(content);
-        this.setPreferredSize(new Dimension(300, 500));
+        this.setPreferredSize(new Dimension(400, 400));
         this.pack();
 
         this.setTitle("Splittable Madness"); // change if you like

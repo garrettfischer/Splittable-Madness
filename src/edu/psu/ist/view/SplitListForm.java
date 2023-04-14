@@ -12,6 +12,10 @@ public class SplitListForm {
     private JButton moveToBeginningButton;
     private JButton clearButton;
 
+    public JLabel getLastRemoved() {
+        return LastRemoved;
+    }
+
     public JPanel getMyPanel() {
         return myPanel;
     }
@@ -54,4 +58,5 @@ public class SplitListForm {
 
     private JButton countOfButton;
     private JButton undoButton;
+    private JLabel LastRemoved;
 }
