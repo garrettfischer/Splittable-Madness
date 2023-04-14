@@ -19,15 +19,27 @@ public class UtilListImpl<E> implements ISplittableList<E> {
 
     // (no constructor needed... unless you do the optional challenge)
 
+    /**
+     *  Adds an element to the front of the right list
+     * @param e the entry to add.
+     *
+     *          runtime of O(n)
+     */
     @Override
     public void addToRightAtFront(E e) {
         right.add(0, e);
-        countingMap.merge(e, 1, Integer::sum);
+        countingMap.merge(e, 1, (oldValue, newValue) -> oldValue + newValue);
     }
 
+    /**
+     *  Removes and return the element at the front of the right list
+     * @return removed element
+     *
+     *  runtime of O(1)
+     */
     @Override
     public E removeFromRightAtFront() {
-        if (right.isEmpty()) {
+        if (right.isEmpty()) {  // defensive check to ensure right list is not empty
             throw new NoSuchElementException("right list is empty");
         }
         E removed = right.remove(0);
@@ -38,24 +50,41 @@ public class UtilListImpl<E> implements ISplittableList<E> {
         return removed;
     }
 
+    /**
+     * This moves all elements from the right to the beginning of the left
+     *
+     * runtime of O(n)
+     */
     @Override
     public void moveToVeryBeginning() {
         right.addAll(0, left);
         countingMap.clear();
         left.clear();
         for (E e : right) {
-            countingMap.merge(e, 1, Integer::sum);
+            countingMap.merge(e, 1, (oldValue, newValue) -> oldValue + newValue);
         }
     }
 
+    /**
+     * returns the count of a specified element in the list
+     * @param e - element that gets counted
+     * @return count of the element
+     *
+     * runtime of O(1)
+     */
     @Override
     public int countOf(E e) {
         return countingMap.getOrDefault(e, 0);
     }
 
+    /**
+     * Moves the handle right one. This moves the element at the front of the right side to the end of the left
+     *
+     * runtime of O(n)
+     */
     @Override
     public void moveForward() {
-        if (right.isEmpty()) {
+        if (right.isEmpty()) {  // defensive check to ensure right list is not empty
             throw new IllegalStateException("right list is empty");
         }
         E moved = right.remove(0);
@@ -69,16 +98,33 @@ public class UtilListImpl<E> implements ISplittableList<E> {
         }
     }
 
+    /**
+     *
+     * @return length of left list
+     *
+     * runtime of O(1)
+     */
     @Override
     public int leftLength() {
         return left.size();
     }
 
+    /**
+     *
+     * @return length of right list
+     *
+     * runtime of O(1)
+     */
     @Override
     public int rightLength() {
         return right.size();
     }
 
+    /**
+     * clears the entire list (left and right sides)
+     *
+     * runtime of O(n)
+     */
     @Override
     public void clear() {
         left.clear();
